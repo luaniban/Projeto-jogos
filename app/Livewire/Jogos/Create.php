@@ -25,7 +25,7 @@ class Create extends Component
 
 
     public function create() {
-        
+        $num = 10;
     }
 
 
