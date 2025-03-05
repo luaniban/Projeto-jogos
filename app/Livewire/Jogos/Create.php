@@ -3,34 +3,56 @@
 namespace App\Livewire\Jogos;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\WithPagination;
+use App\Providers\ApiService;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Create extends Component
 {
     public $title;
     public $description;
     public $img;
+    public $display = 'hidden';
+    public $all;
 
 
 
-    public $modalCreate = false;
+    use WithPagination;
 
 
-    public function openModalCreate() {
-        $this->modalCreate = true;
+    public function openModal() {
+        $this->display = 'flex';
     }
 
-    public function closeModalCreate() {
-        $this->modalCreate = false;
+    public function closeModal() {
+        $this->display = 'hidden';
     }
 
 
     public function create() {
-        $num = 10;
+
     }
 
 
     public function render()
     {
-        return view('livewire.jogos.create');
+
+
+
+        $this->all = ApiService::fetchAll();
+        $currentPage = $this->page ?? 1;
+        $currentItems = array_slice($this->all, ($currentPage - 1) * 3, 3);
+
+
+        $paginatedGames = new LengthAwarePaginator(
+            $currentItems,
+            count($this->all),
+            3,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('livewire.jogos.create', ['games' => $paginatedGames]);
     }
 }

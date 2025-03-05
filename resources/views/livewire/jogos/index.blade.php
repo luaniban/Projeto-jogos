@@ -5,7 +5,7 @@
         <div class="font-bold text-white">Sobre</div>
         <div class="font-bold text-white">Contato</div>
     </header>
-    <div id="content" class="w-4/5">
+    <div id="content" class="relative w-4/5">
         <div class="h-screen">
 
             <div class="w-full py-2 my-4 text-3xl text-center text-white bg-blue-400 h-30">FAÇA A COLEÇÃO DOS SEUS JOGOS FAVORITOS</div>
@@ -29,12 +29,7 @@
             <div class="w-full py-2 text-3xl text-center text-white bg-blue-400 h-30">Suas coleções ficaram aqui</div>
 
             <div class="h-screen p-4 m-8 bg-white">
-                <x-buttonn class="">
-                    <div class="flex items-center justify-center">
-                    <img src="{{ asset('img/plus.svg') }}" alt="" class="w-8 h-8 "/>
-                    <div>Adicionar</div>
-                    </div>
-                </x-buttonn>
+                <livewire:jogos.create>
                 <div class="h-screen mt-4">
                     <div id="card1" class="h-[40%] w-40 bg-gray-200">
                         <img class="h-[80%] w-full border-4" src="{{ asset('img/imgDefault.png') }}"></img>
@@ -42,6 +37,8 @@
                     </div>
                 </div>
             </div>
+
+
 
 
         </div>

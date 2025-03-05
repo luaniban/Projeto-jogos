@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Http;
 class Index extends Component
 {
 
+    public $modal = true;
     public $all;
 
 
+
+    public function closeModal() {
+        $this->modal = false;
+    }
     public function mount() {
         $this->all = ApiService::fetchAll();
-        //dd($this->all);
+    
+        //title, description
     }
     public function render()
     {
