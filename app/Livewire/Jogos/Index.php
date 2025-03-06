@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Jogos;
 
+use App\Models\Coletion;
 use App\Providers\ApiService;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
@@ -10,7 +11,7 @@ class Index extends Component
 {
 
     public $modal = true;
-    public $all;
+    public $allColetions;
 
 
 
@@ -18,9 +19,7 @@ class Index extends Component
         $this->modal = false;
     }
     public function mount() {
-        $this->all = ApiService::fetchAll();
-    
-        //title, description
+        $this->allColetions = Coletion::all();
     }
     public function render()
     {

@@ -12,7 +12,7 @@ class ApiService extends ServiceProvider
 
 
     static function fetchAll() {
-        return Http::get('https://www.freetogame.com/api/games?limit=2$skip=2')->json();
+        return Http::get('https://www.freetogame.com/api/games')->json();
     }
     /**
      * Register services.

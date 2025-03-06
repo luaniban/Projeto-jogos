@@ -30,11 +30,14 @@
 
             <div class="h-screen p-4 m-8 bg-white">
                 <livewire:jogos.create>
-                <div class="h-screen mt-4">
-                    <div id="card1" class="h-[40%] w-40 bg-gray-200">
+                <div class="flex flex-wrap h-screen gap-2 mt-4 ml-32">
+                    @foreach ($allColetions as $card)
+                    <div id="card1" class="h-[40%] w-[20%] bg-gray-200">
+                        <div class="w-full">{{$card->name}}</div>
                         <img class="h-[80%] w-full border-4" src="{{ asset('img/imgDefault.png') }}"></img>
-                        <div class="h-[20%] w-full bg-blue-700 text-center text-white text-2xl pt-3 rounded-b-md">Ver jogos</div>
+                        <livewire:jogos.edit>
                     </div>
+                    @endforeach
                 </div>
             </div>
 

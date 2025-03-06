@@ -2,15 +2,17 @@
 
 namespace App\Livewire\Jogos;
 
+use App\Models\Coletion;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use App\Providers\ApiService;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Attributes\Validate;
 
 class Create extends Component
 {
-    public $title;
+    public $name;
     public $description;
     public $img;
     public $display = 'hidden';
@@ -23,22 +25,41 @@ class Create extends Component
 
     public function openModal() {
         $this->display = 'flex';
+
     }
 
     public function closeModal() {
         $this->display = 'hidden';
     }
 
+    private function resetInputFields() {
+        $this->reset(['name', 'description']);
 
-    public function create() {
+    }
+
+
+
+    public function store() {
+        $this->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+
+        Coletion::create([
+            'name' => $this->name,
+            'description' => $this->description
+        ]);
+
+        $this->resetInputFields();
+        $this->closeModal();
+       // dd($this->name);
 
     }
 
 
     public function render()
     {
-
-
 
         $this->all = ApiService::fetchAll();
         $currentPage = $this->page ?? 1;
