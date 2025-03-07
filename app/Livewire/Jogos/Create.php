@@ -62,18 +62,18 @@ class Create extends Component
     {
 
         $this->all = ApiService::fetchAll();
-        $currentPage = $this->page ?? 1;
-        $currentItems = array_slice($this->all, ($currentPage - 1) * 3, 3);
+        // $currentPage = $this->page ?? 1;
+        // $currentItems = array_slice($this->all, ($currentPage - 1) * 3, 3);
 
 
-        $paginatedGames = new LengthAwarePaginator(
-            $currentItems,
-            count($this->all),
-            3,
-            $currentPage,
-            ['path' => request()->url(), 'query' => request()->query()]
-        );
+        // $paginatedGames = new LengthAwarePaginator(
+        //     $currentItems,
+        //     count($this->all),
+        //     3,
+        //     $currentPage,
+        //     ['path' => request()->url(), 'query' => request()->query()]
+        // );
 
-        return view('livewire.jogos.create', ['games' => $paginatedGames]);
+        return view('livewire.jogos.create');
     }
 }

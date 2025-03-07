@@ -35,9 +35,11 @@
                     <div id="card1" class="h-[40%] w-[20%] bg-gray-200">
                         <div class="w-full">{{$card->name}}</div>
                         <img class="h-[80%] w-full border-4" src="{{ asset('img/imgDefault.png') }}"></img>
-                        <livewire:jogos.edit>
+                        <x-button @click="$dispatch('dispatch-modal-edit', { id: {{ $card->id }} })" class="w-full px-4 py-2 text-xl font-bold text-white bg-blue-500 rounded-none hover:bg-blue-700">Ver Jogos</x-button>
+
                     </div>
                     @endforeach
+                    <livewire:jogos.edit>
                 </div>
             </div>
 
