@@ -62,7 +62,21 @@
                         <tr class="border-2">
                             <div class="flex items-center">
                                 <td class="border-r-2 hover:bg-gray-200">
-                                    <x-button icon="plus" color='blue' class="h-12"></x-button>
+
+                                    @if($botaoAddJogo == false && $idAPI == $jogo['id'])
+                                        <x-button icon="plus" color="red" class="h-12"></x-button>
+                                    @else
+                                     
+                                        <x-button icon="plus" color="blue" class="h-12"
+                                        @click="$dispatch('dispatch-add-jogo', {
+                                            idAPI: {{ $jogo['id'] }},
+                                            titleAPI: '{{ $jogo['title'] }}',
+                                            descriptionAPI: '{{ $jogo['short_description'] }}',
+                                            imgAPI: '{{ $jogo['thumbnail'] }}'
+                                        })">
+                                        </x-button>
+                                    @endif
+
                                     <div>{{ $jogo['title'] }}</div>
                                 </td>
                                 <td class="hover:bg-gray-200">{{ $jogo['short_description'] }}</td>

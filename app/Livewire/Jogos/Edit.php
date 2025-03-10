@@ -11,7 +11,7 @@ class Edit extends Component
 
     public $name;
     public $description;
-
+    public $coletionId;
     public $modal = false;
 
 
@@ -22,7 +22,7 @@ class Edit extends Component
     public function closeModal() {
         $this->modal = false;
     }
-    
+
 
 
     #[On('dispatch-modal-edit')]
@@ -33,9 +33,24 @@ class Edit extends Component
 
         $coletion = Coletion::find($id);
 
+        $this->coletionId = $coletion->id;
         $this->name = $coletion->name;
         $this->description = $coletion->description;
+    }
 
+    public function save() {
+
+
+        $coletion = Coletion::find($this->coletionId);
+
+        $coletion->update([
+            'name' => $this->name,
+            'description' => $this->description
+        ]);
+
+
+        $this->closeModal();
+        $this->dispatch('dispatch-edit');
     }
 
 

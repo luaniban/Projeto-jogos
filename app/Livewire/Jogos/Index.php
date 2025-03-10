@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Jogos;
 
-use App\Models\Coletion;
-use App\Providers\ApiService;
 use Livewire\Component;
+use App\Models\Coletion;
+use Livewire\Attributes\On;
+use App\Providers\ApiService;
 use Illuminate\Support\Facades\Http;
 
 class Index extends Component
@@ -21,6 +22,11 @@ class Index extends Component
     public function mount() {
         $this->allColetions = Coletion::all();
     }
+
+
+
+    #[On('dispatch-create')]
+    #[On('dispatch-edit')]
     public function render()
     {
         return view('livewire.jogos.index');

@@ -28,15 +28,14 @@
         <div id="colecao" class="w-full h-screen bg-gray-300">
             <div class="w-full py-2 text-3xl text-center text-white bg-blue-400 h-30">Suas coleções ficaram aqui</div>
 
-            <div class="h-screen p-4 m-8 bg-white">
+            <div class="p-4 m-8 bg-white h-[85%]">
                 <livewire:jogos.create>
-                <div class="flex flex-wrap h-screen gap-2 mt-4 ml-32">
+                <div class="flex flex-wrap gap-2 mt-4 ml-32 ">
                     @foreach ($allColetions as $card)
-                    <div id="card1" class="h-[40%] w-[20%] bg-gray-200">
+                    <div id="card1" class="h-[30%] w-[20%] bg-gray-200 hover:h-[35%] hover:w-[25%]' mt-4 mb-2">
                         <div class="w-full">{{$card->name}}</div>
                         <img class="h-[80%] w-full border-4" src="{{ asset('img/imgDefault.png') }}"></img>
-                        <x-button @click="$dispatch('dispatch-modal-edit', { id: {{ $card->id }} })" class="w-full px-4 py-2 text-xl font-bold text-white bg-blue-500 rounded-none hover:bg-blue-700">Ver Jogos</x-button>
-
+                        <x-button @click="$dispatch('dispatch-modal-edit', { id: {{ $card->id }} })" class="w-full px-4 py-4 text-xl font-bold text-white bg-blue-500 rounded-none hover:bg-blue-700">Ver Jogos</x-button>
                     </div>
                     @endforeach
                     <livewire:jogos.edit>

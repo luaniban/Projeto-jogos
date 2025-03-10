@@ -2,13 +2,14 @@
 
 namespace App\Livewire\Jogos;
 
-use App\Models\Coletion;
+use App\Models\Jogo;
 use Livewire\Component;
+use App\Models\Coletion;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use App\Providers\ApiService;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Validate;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Create extends Component
 {
@@ -17,9 +18,12 @@ class Create extends Component
     public $img;
     public $display = 'hidden';
     public $all;
-
-
-
+    public $descriptionAPI;
+    public $titleAPI;
+    public $idAPI;
+    public $imgAPI;
+    public $botaoAddJogo = true;
+    public $ultimoRegistro;
     use WithPagination;
 
 
@@ -38,6 +42,43 @@ class Create extends Component
     }
 
 
+    #[On('dispatch-add-jogo')]
+    public function addJogoOnDb($idAPI, $titleAPI, $descriptionAPI, $imgAPI) {
+
+        $this->idAPI = $idAPI;
+        $this->titleAPI = $titleAPI;
+        $this->descriptionAPI = $descriptionAPI;
+        $this->imgAPI = $imgAPI;
+
+        Jogo::create([
+            'title' => $this->titleAPI,
+            'description' => $this->descriptionAPI,
+            'image' => $this->imgAPI,
+            'jogo_id' => $this->idAPI
+        ]);
+
+
+
+        $this->ultimoRegistro = Jogo::latest()->latest()->first();
+
+
+        foreach(Jogo::all() as $jogo) {
+
+            if($jogo->jogo_id == $this->ultimoRegistro->jogo_id && $jogo->id != $this->ultimoRegistro->id) {
+
+                $this->ultimoRegistro->delete();
+            }
+        }
+
+        
+
+        $this->botaoAddJogo = false;
+
+    }
+
+
+
+
 
     public function store() {
         $this->validate([
@@ -53,6 +94,7 @@ class Create extends Component
 
         $this->resetInputFields();
         $this->closeModal();
+        $this->dispatch('dispatch-create');
        // dd($this->name);
 
     }
