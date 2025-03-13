@@ -10,13 +10,13 @@
 
             <div class="w-full py-2 my-4 text-3xl text-center text-white bg-blue-400 h-30">FAÇA A COLEÇÃO DOS SEUS JOGOS FAVORITOS</div>
             <div class="flex">
-                <img src="{{ asset('img/imgDefault.png')  }}" class="w-1/2 border-4 h-60"/>
-                <img src="{{ asset('img/imgDefault.png')  }}" class="w-1/2 border-t-4 border-b-4 h-60"/>
+                <img src="{{ asset('img/img1.jpeg')  }}" class="w-1/2 border-4 h-60"/>
+                <img src="{{ asset('img/img2.png')  }}" class="w-1/2 border-t-4 border-b-4 h-60"/>
             </div>
             <div class="flex">
-                <img src="{{ asset('img/imgDefault.png')  }}" class="w-1/3 border-l-4 border-r-4 rounded-bl-lg"/>
-                <img src="{{ asset('img/imgDefault.png')  }}" class="w-1/3 border-r-4 h-60"/>
-                <img src="{{ asset('img/imgDefault.png')  }}" class="w-1/3 rounded-br-lg h-60"/>
+                <img src="{{ asset('img/img3.jpeg')  }}" class="w-1/3 border-l-4 border-r-4 rounded-bl-lg"/>
+                <img src="{{ asset('img/img4.avif')  }}" class="w-1/3 border-r-4 h-60"/>
+                <img src="{{ asset('img/img5.avif')  }}" class="w-1/3 rounded-br-lg h-60"/>
             </div>
             <div class="flex items-center justify-center w-full mt-3">
 

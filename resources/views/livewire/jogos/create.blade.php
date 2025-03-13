@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                        <div class="flex justify-end w-full mt-40">
+                        <div class="flex justify-end w-full mt-24">
                             <x-buttonn :click="'store'">Salvar</x-buttonn>
                         </div>
                 </div>
@@ -66,7 +66,7 @@
                                     @if($botaoAddJogo == false && $idAPI == $jogo['id'])
                                         <x-button icon="plus" color="red" class="h-12"></x-button>
                                     @else
-                                     
+
                                         <x-button icon="plus" color="blue" class="h-12"
                                         @click="$dispatch('dispatch-add-jogo', {
                                             idAPI: {{ $jogo['id'] }},

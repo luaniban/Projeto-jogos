@@ -7,4 +7,4 @@ Route::get('/', function () {
 });
 Route::get('/home',Jogos\Index::class)->name('home');
 
-
+Route::get('/login', Jogos\Login::class)->name('login');

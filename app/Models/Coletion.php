@@ -10,4 +10,15 @@ class Coletion extends Model
         'name',
         'description'
     ];
+
+
+
+
+
+    public function jogos(){
+        return $this->belongsToMany(Jogo::class);
+
+    }
+
+
 }

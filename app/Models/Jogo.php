@@ -14,4 +14,10 @@ class Jogo extends Model
         'jogo_id'
     ];
 
+
+    public function coletions(){
+        return $this->belongsToMany(Coletion::class);
+
+    }
+
 }

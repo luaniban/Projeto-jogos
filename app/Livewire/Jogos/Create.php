@@ -24,6 +24,7 @@ class Create extends Component
     public $imgAPI;
     public $botaoAddJogo = true;
     public $ultimoRegistro;
+    public $armezenaEmArray = [];
     use WithPagination;
 
 
@@ -50,7 +51,7 @@ class Create extends Component
         $this->descriptionAPI = $descriptionAPI;
         $this->imgAPI = $imgAPI;
 
-        Jogo::create([
+         Jogo::create([
             'title' => $this->titleAPI,
             'description' => $this->descriptionAPI,
             'image' => $this->imgAPI,
@@ -59,7 +60,8 @@ class Create extends Component
 
 
 
-        $this->ultimoRegistro = Jogo::latest()->latest()->first();
+        $this->ultimoRegistro = Jogo::latest()->first();
+        $this->armezenaEmArray[] = $this->ultimoRegistro->jogo_id;
 
 
         foreach(Jogo::all() as $jogo) {
@@ -70,9 +72,13 @@ class Create extends Component
             }
         }
 
-        
+
+
 
         $this->botaoAddJogo = false;
+
+
+
 
     }
 
@@ -87,10 +93,14 @@ class Create extends Component
         ]);
 
 
-        Coletion::create([
+        $collection = Coletion::create([
             'name' => $this->name,
             'description' => $this->description
         ]);
+
+        $collection->jogos()->attach($this->ultimoRegistro);
+
+        $this->armezenaEmArray = [];
 
         $this->resetInputFields();
         $this->closeModal();
