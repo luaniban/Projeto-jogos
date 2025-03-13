@@ -47,8 +47,8 @@
                         <button class="px-1 py-2 mt-6 font-bold text-white bg-blue-500 hover:bg-blue-700">Registrar</button>
 
                         <button class="flex justify-end gap-1 mt-2" @click="$dispatch('dispatch-login')" >
-                            <div class="text-gray-500 ">Não é registrado?</div>
-                            <div class="text-blue-500 hover:text-blue-600">Registrar-se</div>
+                            <div class="text-gray-500 ">Vocâ já tem cadastro?</div>
+                            <div class="text-blue-500 hover:text-blue-600">Login</div>
                         </button>
                     @endif
                     @if($login)
@@ -58,8 +58,8 @@
                         <button class="px-1 py-2 mt-6 font-bold text-white bg-blue-500 hover:bg-blue-700" @click="$dispatch('dispatch-home')">Entrar</button>
 
                         <button class="flex justify-end gap-1 mt-2" @click="$dispatch('dispatch-register')" >
-                            <div class="text-gray-500 ">Vocâ já tem cadastro?</div>
-                            <div class="text-blue-500 hover:text-blue-600">Login</div>
+                            <div class="text-gray-500 ">Não é registrado?</div>
+                            <div class="text-blue-500 hover:text-blue-600">Registrar-se</div>
                         </button>
                     @endif
 
