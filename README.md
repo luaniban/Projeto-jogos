@@ -1,1 +1,1 @@
-### Link do Projeto: https://projeto-jogos-main-ax9y4t.laravel.cloud/home
+### Link do Projeto: https://projeto-jogos-main-ax9y4t.laravel.cloud
